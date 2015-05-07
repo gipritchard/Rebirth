@@ -18,18 +18,16 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
-{
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
-        return false;
-    }
+bool HelloWorld::init(){
+    if(!Layer::init()){ return false; }
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	auto BG = Sprite::create("bg.png");
+	BG->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+	this->addChild(BG, 0);
+	
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.

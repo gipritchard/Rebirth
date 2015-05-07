@@ -3,13 +3,8 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
-}
-
-AppDelegate::~AppDelegate() 
-{
-}
+AppDelegate::AppDelegate(){}
+AppDelegate::~AppDelegate(){}
 
 //if you want a different context,just modify the value of glContextAttrs
 //it will takes effect on all platforms
@@ -38,9 +33,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+	auto frameSize = director->getOpenGLView()->getFrameSize();
+	glview->setDesignResolutionSize(960, 640, ResolutionPolicy::EXACT_FIT);
+
     // turn on display FPS
     director->setDisplayStats(true);
-
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
@@ -48,8 +45,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
-
-    // run
     director->runWithScene(scene);
 
     return true;
